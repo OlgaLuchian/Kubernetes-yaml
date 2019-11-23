@@ -2,21 +2,21 @@ apiVersion: extensions/v1beta1
 kind: ReplicaSet 
 metadata: 
   labels: 
-    name: kuard-rs 
-  name: kuard-rs 
+    name: nginx-rs 
+  name: nginx-rs 
 spec:  
   replicas: 3 
   selector:  
     matchLabels: 
-      app: kuard-rs-pod 
+      app: nginx-rs-pod 
   template:  
     metadata: 
       labels:  
-        app: kuard-rs-pod 
+        app: nginx-rs-pod 
     spec:  
       containers:  
-      - image: gcr.io/kuar-demo/kuard-amd64:1 
-        name: kuard
+      - image: nginx 
+        name: nginx
         ports: 
         - containerPort: 80
           protocol: TCP
@@ -26,11 +26,11 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: kuards-rs-test-service
-  name: kuards-rs-test-service
+    run: nginx-rs-test-service
+  name: nginx-rs-test-service
 spec:
   selector:
-    app: kuard-rs-pod
+    app: nginx-rs-pod
   ports:
   - name: service-port
     port: 81
