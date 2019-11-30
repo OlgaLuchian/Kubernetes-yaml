@@ -1,7 +1,0 @@
-Version: v1
-kind: Secret
-metadata:
-  name: test-secret
-data:
-  username: secret-creds
-  password: MySecureP@ss
